@@ -13,7 +13,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       location: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: "-"
       },
       profileUrl: {
         type: Sequelize.STRING
@@ -25,6 +26,8 @@ module.exports = {
           model: "Users",
           key: "id",
         },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       },
       createdAt: {
         allowNull: false,

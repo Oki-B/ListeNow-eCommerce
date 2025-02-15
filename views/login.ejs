@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="luxury">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <%- include('./partials/_script') %>
+  </head>
+  <body>
+    <div class="flex flex-col lg:flex-row justify-center items-center h-screen">
+      <div class="w-full lg:w-3/6 h-64 lg:h-full">
+        <img
+          class="object-cover h-full w-full"
+          src="https://image.pollinations.ai/prompt/audioecommerceproductimagefrontpage?width=720&height=1280&nologo=true"
+          alt="front-cover-image"
+        />
+      </div>
+      <div
+        class="w-full lg:w-3/6 h-full flex flex-col justify-center items-center text-center p-6"
+      >
+        <h1
+          class="text-4xl font-bold sm:text-6xl mb-6"
+          style="
+            font-family: Audiowide, serif;
+            font-weight: 400;
+            font-style: normal;
+            color: goldenrod;
+          "
+        >
+          ListeNow
+        </h1>
+        <p class="text-lg sm:text-2xl text-gray-600 font-semibold mb-6 italic">
+          Login
+        </p>
+        <% if (error) { %>
+        <p class="text-error mb-2 italic"><%= error %></p>
+        <% } %>
+
+        <!-- Login Form -->
+        <form
+          action="/login"
+          method="POST"
+          class="flex flex-col gap-4 w-full max-w-sm mb-10"
+        >
+          <div>
+            <!-- Input for Username -->
+            <label class="input input-bordered flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                class="h-4 w-4 opacity-70"
+              >
+                <path
+                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+                />
+              </svg>
+              <input
+                type="text"
+                class="grow"
+                placeholder="Username"
+                name="username"
+              />
+            </label>
+            <% if (errors === "username") { %>
+            <p class="my-1 text-error italic text-left ml-4">
+              Username is invalid
+            </p>
+            <% } %>
+          </div>
+
+          <div>
+            <!-- Input for Password -->
+            <label class="input input-bordered flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                class="h-4 w-4 opacity-70"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <input
+                type="password"
+                class="grow"
+                placeholder="•••••••••"
+                name="password"
+              />
+            </label>
+            <% if (errors === "password") { %>
+            <p class="my-1 text-error italic text-left ml-4">
+              Password is invalid
+            </p>
+            <% } %>
+          </div>
+
+          <!-- Login Button -->
+          <button class="btn btn-primary w-full text-lg" type="submit">
+            Login
+          </button>
+        </form>
+
+        <!-- Register Link Navigation -->
+        <div class="mb-6 text-sm">
+          <p>
+            Don't have an account yet?
+            <a class="underline text-primary" href="/register">click here</a>
+            to register
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
