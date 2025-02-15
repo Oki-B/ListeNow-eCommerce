@@ -12,6 +12,8 @@ router.post('/register', isLogin, UserController.postRegister);
 
 router.use(isNotLogin); // middleware for checking if user is not login
 
+router.get('/logout', UserController.logout);
+
 router.get('/', UserController.getHome);
 
 module.exports = router;
