@@ -1,7 +1,8 @@
-const { User } = require("../models");
+const { User, Product, Store } = require("../models");
 const { comparePassword } = require("../helpers/bcyrpt");
 
 const { Op } = require("sequelize");
+const idrFormat = require("../helpers/idrFormat");
 
 class UserController {
   static async getLogin(req, res) {
@@ -69,7 +70,28 @@ class UserController {
 
   static async getHome(req, res) {
     try {
-      res.render("home", { title: "Home" });
+      const role = req.session.role;
+      const userId = req.session.userId;
+      const products = await Product.findAll({
+        include: [
+          {
+            model: Store,
+            attributes: ["UserId"] ,
+          },
+        ],
+      });
+      
+      res.render("home", { title: "Home", products, role, userId, idrFormat });
+    } catch (error) {
+      console.log(error);
+      res.send(error);
+    }
+  }
+
+  static async logout(req, res) {
+    try {
+      req.session.destroy();
+      res.redirect("/login");
     } catch (error) {
       res.send(error);
     }
