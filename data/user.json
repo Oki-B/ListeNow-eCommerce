@@ -1,0 +1,38 @@
+[
+    {
+        "username": "johndoe123",
+        "password": "securePassword123!",
+        "email": "johndoe@mail.com", 
+        "role": "customer"
+      },
+      {
+        "username": "Elektronikdigital",
+        "password": "digital2024!",
+        "email": "digital@mail.com",
+        "role": "store"
+      },
+      {
+        "username": "mikebrown87",
+        "password": "shopperSpecial456#",
+        "email": "mike.brown@gmail.com",
+        "role": "customer"
+      },
+      {
+        "username": "Gadgetmaestro",
+        "password": "gadget2024!",
+        "email": "gadgetmaestro@mail.com",
+        "role": "store"
+      },
+      {
+        "username": "alexwang99",
+        "password": "customerSuper789%",
+        "email": "alex.wang@outlook.com",
+        "role": "customer"
+      },
+      {
+        "username": "Tokosentral",
+        "password": "tokosentral2024!",
+        "email": "tokosentral@mail.com",
+        "role": "store"
+      }
+]
