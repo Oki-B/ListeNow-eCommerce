@@ -1,0 +1,108 @@
+[
+    {
+      "productName": "SoundWave Pro X1",
+      "productDescription": "Premium over-ear noise-cancelling wireless headphones with extended battery life and crystal-clear sound quality",
+      "productPrice": 750000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofPremium%20over-ear%20noise-cancelling%20wireless%20headphones%20with%20extended%20battery%20life%20and%20crystal-clear%20sound%20quality?width=640&height=640&nologo=true",
+      "StoreId": 1
+    },
+    {
+      "productName": "BassKing 9000",
+      "productDescription": "Deep bass wireless headphones with premium cushioning for long listening sessions",
+      "productPrice": 620000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofDeep%20bass%20wireless%20headphones%20with%20premium%20cushioning%20for%20long%20listening%20sessions?width=640&height=640&nologo=true",
+      "StoreId": 2
+    },
+    {
+      "productName": "EchoSurge Elite",
+      "productDescription": "Lightweight wireless headphones with superior noise isolation and HD sound",
+      "productPrice": 550000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofLightweight%20wireless%20headphones%20with%20superior%20noise%20isolation%20and%20HD%20sound?width=640&height=640&nologo=true",
+      "StoreId": 3
+    },
+    {
+      "productName": "UltraSound Max",
+      "productDescription": "Studio-quality wired headphones with precision sound and ergonomic design",
+      "productPrice": 850000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofStudio-quality%20wired%20headphones%20with%20precision%20sound%20and%20ergonomic%20design?width=640&height=640&nologo=true",
+      "StoreId": 1
+    },
+    {
+      "productName": "SonicPulse X",
+      "productDescription": "Active noise-canceling Bluetooth headphones with a sleek modern design",
+      "productPrice": 680000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofActive%20noise-canceling%20Bluetooth%20headphones%20with%20a%20sleek%20modern%20design?width=640&height=640&nologo=true",
+      "StoreId": 2
+    },
+    {
+      "productName": "ClearTune 500",
+      "productDescription": "Affordable wired headphones with crisp highs and powerful bass",
+      "productPrice": 320000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofAffordable%20wired%20headphones%20with%20crisp%20highs%20and%20powerful%20bass?width=640&height=640&nologo=true",
+      "StoreId": 3
+    },
+    {
+      "productName": "ThunderBeats X2",
+      "productDescription": "Sport-friendly wireless headphones with sweat resistance and deep bass",
+      "productPrice": 580000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofSport-friendly%20wireless%20headphones%20with%20sweat%20resistance%20and%20deep%20bass?width=640&height=640&nologo=true",
+      "StoreId": 1
+    },
+    {
+      "productName": "WaveMaster 700",
+      "productDescription": "Premium studio headphones with noise isolation and immersive soundstage",
+      "productPrice": 920000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofPremium%20studio%20headphones%20with%20noise%20isolation%20and%20immersive%20soundstage?width=640&height=640&nologo=true",
+      "StoreId": 2
+    },
+    {
+      "productName": "ZenAudio Quiet",
+      "productDescription": "Compact foldable headphones with high-quality audio and ANC technology",
+      "productPrice": 650000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofCompact%20foldable%20headphones%20with%20high-quality%20audio%20and%20ANC%20technology?width=640&height=640&nologo=true",
+      "StoreId": 3
+    },
+    {
+      "productName": "HyperSound X10",
+      "productDescription": "High-fidelity wireless headphones with lossless audio support",
+      "productPrice": 990000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofHigh-fidelity%20wireless%20headphones%20with%20lossless%20audio%20support?width=640&height=640&nologo=true",
+      "StoreId": 1
+    },
+    {
+      "productName": "BeatzElite 100",
+      "productDescription": "Comfortable headphones with 40-hour battery life and deep bass mode",
+      "productPrice": 710000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofComfortable%20headphones%20with%2040-hour%20battery%20life%20and%20deep%20bass%20mode?width=640&height=640&nologo=true",
+      "StoreId": 2
+    },
+    {
+      "productName": "VortexSound Pro",
+      "productDescription": "Premium wired headphones with hi-res audio and plush ear cups",
+      "productPrice": 780000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofPremium%20wired%20headphones%20with%20hi-res%20audio%20and%20plush%20ear%20cups?width=640&height=640&nologo=true",
+      "StoreId": 3
+    },
+    {
+      "productName": "TrueBass Studio",
+      "productDescription": "Professional monitoring headphones with deep bass and neutral sound profile",
+      "productPrice": 870000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofProfessional%20monitoring%20headphones%20with%20deep%20bass%20and%20neutral%20sound%20profile?width=640&height=640&nologo=true",
+      "StoreId": 1
+    },
+    {
+      "productName": "CloudAudio 3D",
+      "productDescription": "3D spatial audio headphones with advanced DSP for immersive gaming",
+      "productPrice": 890000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureof3D%20spatial%20audio%20headphones%20with%20advanced%20DSP%20for%20immersive%20gaming?width=640&height=640&nologo=true",
+      "StoreId": 2
+    },
+    {
+      "productName": "PulseSync 700",
+      "productDescription": "Smart headphones with AI voice assistant and multi-device connectivity",
+      "productPrice": 730000,
+      "productImage": "https://image.pollinations.ai/prompt/productpictureofSmart%20headphones%20with%20AI%20voice%20assistant%20and%20multi-device%20connectivity?width=640&height=640&nologo=true",
+      "StoreId": 3
+    }
+  ]
+  

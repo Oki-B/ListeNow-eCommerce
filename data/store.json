@@ -1,0 +1,26 @@
+[
+    {
+        "storeName": "Elektronik Digital Jakarta",
+        "location": "Jakarta, DKI Jakarta",
+        "profileUrl": "https://image.pollinations.ai/prompt/HeadsetstorenamedElektronikDigitalJakarta?width=640&height=400&nologo=true",
+        "UserId": 2,
+        "createdAt": "2024-01-15T10:30:15Z",
+        "updatedAt": "2024-12-04T14:22:33Z"
+      },
+      {
+        "storeName": "Gadget Maestro Surabaya",
+        "location": "Surabaya, Jawa Timur",
+        "profileUrl": "https://image.pollinations.ai/prompt/HeadphonestorenamedGadgetMaestroSurabaya?width=640&height=400&nologo=true",
+        "UserId": 4,
+        "createdAt": "2024-02-20T09:45:22Z",
+        "updatedAt": "2024-12-03T16:55:44Z"
+      },
+      {
+        "storeName": "Tekno Sentral Bandung",
+        "location": "Bandung, Jawa Barat",
+        "profileUrl": "https://image.pollinations.ai/prompt/AudiostorenamedTokoSentralBandung?width=640&height=400&nologo=true",
+        "UserId": 6,
+        "createdAt": "2024-03-10T15:20:11Z",
+        "updatedAt": "2024-12-02T11:10:22Z"
+      }
+    ]
