@@ -15,10 +15,54 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Store.init({
-    storeName: DataTypes.STRING,
-    location: DataTypes.STRING,
-    profileUrl: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    storeName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull:{
+          msg: `Store Name is required`
+        },
+        notEmpty:{
+          msg: `Store Name is required`
+        }
+      }
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull:{
+          msg: `Location is required`
+        },
+        notEmpty:{
+          msg: `Location is required`
+        }
+      }
+    },
+    profileUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull:{
+          msg: `Store Image is required`
+        },
+        notEmpty:{
+          msg: `Store Image is required`
+        }
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull:{
+          msg: `User ID is required`
+        },
+        notEmpty:{
+          msg: `User ID is required`
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Store',

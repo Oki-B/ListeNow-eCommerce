@@ -1,47 +1,65 @@
 <div class="navbar bg-base-200">
-    <div class="flex-1">
-      <a
-        class="px-4 py-2 text-xl"
-        style="
-          font-family: Audiowide, serif;
-          font-weight: 400;
-          font-style: normal;
-        "
-        href="/"
-        >ListeNow</a
-      >
+  <div class="flex-1">
+    <a
+      class="px-4 py-2 text-xl"
+      style="
+        font-family: Audiowide, serif;
+        font-weight: 400;
+        font-style: normal;
+      "
+      href="/"
+      >ListeNow</a
+    >
+  </div>
+  <div class="flex-none gap-2">
+    <% if (role === "store") { %>
+    <div class="btn btn-ghost">
+      <a class="text-md" href=<%= `/store/${userId}` %> >My Product</a>
     </div>
-    <div class="flex-none gap-2">
-      <div class="btn btn-ghost">
-        <p class="text-md">My Product</p>
-      </div>
+    <% } %>
 
-      <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn btn-circle" role="button">
-          <!-- hamburger icon -->
-          <svg
-            class="fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 512 512"
-          >
-            <path
-              d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
-            />
-          </svg>
-
-
-        </label>
-        <ul
-          tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+    <div class="dropdown dropdown-end">
+      <label tabindex="0" class="btn btn-circle" role="button">
+        <!-- hamburger icon -->
+        <svg
+          class="fill-current"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 512 512"
         >
-          <li>
-            <a class="justify-between"> Profile </a>
-          </li>
-          <li><a href="/logout">Logout</a></li>
-        </ul>
-      </div>
+          <path
+            d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
+          />
+        </svg>
+      </label>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+      >
+        <li>
+          <a class="justify-between">
+            My Items
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+            </span>
+          </a>
+        </li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
     </div>
   </div>
+</div>

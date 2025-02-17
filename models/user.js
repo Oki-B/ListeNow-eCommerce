@@ -66,7 +66,18 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    role: DataTypes.STRING
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull:{
+          msg: `Role is required`
+        },
+        notEmpty:{
+          msg: `Role is required`
+        }
+      }
+    }
   }, {
     hooks: {
       beforeCreate: (user, options) => {

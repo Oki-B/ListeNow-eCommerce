@@ -10,7 +10,35 @@
     <!-- Navbar -->
     <%- include('./partials/_navbar') %>
 
-    <div class="flex flex-col lg:flex-row justify-center items-center my-10">
+    <form action="/" method="GET" class="flex flex-row justify-center items-center mt-10 gap-6">
+        <label class="input input-bordered flex items-center gap-2 w-3/6">
+            <input type="text" class="grow" placeholder="Search" name="search"  />
+            <button type="submit">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                class="h-4 w-4 opacity-70">
+                <path
+                  fill-rule="evenodd"
+                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button>
+          </label>
+          
+          
+            <select class="select select-bordered w-fit text-primary"  onchange="this.form.submit()" name="sort">
+                <option value="high" type="submit" <%= sort === "high" ? "selected" : null %>>Highest Price</option>
+                <option value="low" type="submit" <%= sort === "low" ? "selected" : null %>>Lowest Price</option>
+              </select>
+
+    </form>
+
+    <div class="flex flex-col lg:flex-row justify-center items-center mb-10">
+        <% if (products.length === 0) { %>
+            <p class="text-center text-2xl italic mt-10 text-primary">Oooppsss.. <br>Product Not Found !</p>
+           <% } %>
       <!-- Product List -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
         <% products.forEach(el => { %>
