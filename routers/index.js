@@ -16,7 +16,9 @@ router.get('/logout', UserController.logout);
 
 router.get('/', UserController.getHome);
 
+router.use('/purchase', require('./purchase'))
 router.use('/store', require('./store'))
+
 
 router.get('/edit-profile', UserController.editProfile);
 router.post('/edit-profile', UserController.postEditProfile);
