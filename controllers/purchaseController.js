@@ -33,13 +33,11 @@ class purchaseController {
         });
       }
 
-      // console.log(store);
       const purchase = await Purchase.findAll({
         where: { UserId: userId },
         include: [Store],
       });
 
-      console.log(purchase);
 
       res.render("purchase", {
         title: "Purchase Lists",
@@ -63,8 +61,7 @@ class purchaseController {
       const role = req.session.role;
 
       const product = await Product.findByPk(ProductId, { include: [Store] });
-      // console.log(product);
-      // console.log(customer);
+
       await Purchase.create({
         productName: product.productName,
         productImage: product.productImage,
@@ -112,8 +109,6 @@ class purchaseController {
         };
       }
 
-      console.log(context);
-
       await sendEmail(
         context.userEmail,
         `Purchase Confirmation - ${context.productName}`,
@@ -126,34 +121,6 @@ class purchaseController {
     }
   }
 
-  // static async printProduct(req, res) {
-  //   try {
-  //     const { ProductId } = req.params;
-  //     const userId = req.session.userId;
-  //     const role = req.session.role;
-  //     const { quantity } = req.body;
-
-  //     const product = await Product.findByPk(ProductId, { include: [Store] });
-  //     // console.log(product);
-  //     // console.log(customer);
-
-  //     let user = null;
-  //     if (role === "store") {
-  //       user = await User.findByPk(userId, {
-  //         include: [Store],
-  //       });
-  //     } else {
-  //       user = await User.findByPk(userId, {
-  //         include: [Customer],
-  //       });
-  //     }
-
-  //     res.render(`print`, { user, product, role, userId });
-
-  //   } catch (error) {
-  //     res.send(error);
-  //   }
-  // }
 }
 
 module.exports = purchaseController;

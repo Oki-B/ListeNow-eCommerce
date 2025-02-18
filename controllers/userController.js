@@ -9,7 +9,6 @@ class UserController {
   static async getLogin(req, res) {
     try {
       let { error, errors } = req.query;
-
       res.render("login", { error, errors, title: "Login" });
     } catch (error) {
       res.send(error);
@@ -133,8 +132,6 @@ class UserController {
       } else {
         user = await Customer.findOne({ where: { UserId: userId } });
       }
-
-      console.log(user);
       res.render("editProfile", { title: "Edit Profile", role, userId, user });
     } catch (error) {
       res.send(error);
@@ -147,10 +144,16 @@ class UserController {
       const userId = req.session.userId;
       const { name, profileUrl, location } = req.body;
 
-      if (role === "store"){
-        await Store.update({ storeName: name, profileUrl, location }, { where: { UserId: userId } });
+      if (role === "store") {
+        await Store.update(
+          { storeName: name, profileUrl, location },
+          { where: { UserId: userId } }
+        );
       } else {
-        await Customer.update({ name, profileUrl }, { where: { UserId: userId } });
+        await Customer.update(
+          { name, profileUrl },
+          { where: { UserId: userId } }
+        );
       }
 
       res.redirect("/");
@@ -167,7 +170,7 @@ class UserController {
 
       res.render("error", { title: "Error", error, userId, role });
     } catch (error) {
-      res.send (error);
+      res.send(error);
     }
   }
 }

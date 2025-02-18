@@ -5,9 +5,4 @@ const router = express.Router();
 router.get('/', purchaseController.getPurchase);
 router.post('/buy/:ProductId', purchaseController.buyProduct);
 
-// router.get('/print/:ProductId', purchaseController.printProduct);
-
-
-
-
 module.exports = router;

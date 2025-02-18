@@ -19,7 +19,6 @@ oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 export default async function sendEmail (to, subject, context, template) {
   try {
     const accessToken = await oAuth2Client.getAccessToken();
-
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -58,22 +57,4 @@ export default async function sendEmail (to, subject, context, template) {
   }
 };
 
-
-// sendEmail(
-//   "okisitampan@gmail.com",
-//   "Purchase Confirmation",
-//   {
-//     userName: 'Elektronik Digital Jakarta',
-//     productName: 'BeatzElite 100',
-//     productImage: 'https://image.pollinations.ai/prompt/productpictureofComfortable%20headphones%20with%2040-hour%20battery%20life%20and%20deep%20bass%20mode?width=640&height=640&nologo=true',
-//     productPrice: 'Rp 710.000,00',
-//     productQuantity: 1,
-//     totalPurchase: 'Rp 710.000,00',
-//     userEmail: 'digital@mail.com',
-//     storeName: 'Gadget Maestro Surabaya',
-//     storeLocation: 'Surabaya, Jawa Timur',
-//     storeImage: 'https://image.pollinations.ai/prompt/HeadphonestorenamedGadgetMaestroSurabaya?width=640&height=400&nologo=true'
-//   },
-//   "invoiceEmail"
-// );
 
