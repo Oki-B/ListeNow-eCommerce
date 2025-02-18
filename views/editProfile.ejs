@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="luxury">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <%- include('./partials/_script') %>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('./partials/_navbar') %>
+
+    <!-- Edit Profile Form -->
+    <div class="flex flex-col lg:flex-row justify-center items-center my-10">
+      <form
+        action="/<%= userId %>/edit-profile"
+        method="POST"
+        class="card shadow-gray-800 card-compact bg-base-300 w-5/6 md:w-2/5 md:min-w-[640px] shadow-sm flex-col px-4"
+      >
+        <div class="card-body">
+          <!-- Title -->
+          <h2 class="text-2xl text-center font-semibold my-6">
+            Edit Profile
+          </h2>
+
+          <!-- Input for name -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Input store name</span>
+            </div>
+            <input name="name" type="text" placeholder="Type here" class="input
+            input-bordered w-full text-primary" value="<%= role === "store" ? user.storeName
+            : user.name %>" />
+          </label>
+
+          <!-- Input for Profile URL -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Input image URL</span>
+            </div>
+            <input
+            name="profileUrl"
+              type="text"
+              placeholder="Type here"
+              class="input input-bordered w-full text-primary"
+              value="<%= user.profileUrl %>"
+            />
+          </label>
+
+          <% if (role === "store") { %>
+          <!-- Input for Location -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Input store location</span>
+            </div>
+            <input
+            name="location"
+              type="text"
+              placeholder="Type here"
+              class="input input-bordered w-full text-primary"
+              value="<%= user.location %>"
+            />
+          </label>
+          <% } %>
+
+          <button class="btn btn-primary w-full text-lg my-4" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

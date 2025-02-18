@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="luxury">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <%- include('./partials/_script') %>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('./partials/_navbar') %>
+
+    <div class="flex flex-col lg:flex-row justify-center items-center my-10">
+        <div class="w-5/6">
+            <div class="flex flex-col lg:flex-row justify-center items-center mb-10 gap-6">
+
+              <div class="w-full flex flex-col gap-4 justify-center items-center">
+                <h1 class="text-3xl font-semibold text-left">Welcome to <span class="text-primary" style="
+                  font-family: Audiowide, serif;
+                  font-weight: 400;
+                  font-style: normal;
+                ">ListeNow</span></h1>
+                <p class="text-lg italic text-center">" Your Ultimate Audio Marketplace! <br><span class="text-primary">Buy, Sell</span> & Experience <span class="text-primary">Sound</span> Like Never Before! <br> 🎧🎧🔥 "</p>
+              </div>
+
+              <% if (role === "store") { %>
+                             <!-- Store Profile -->
+              <div class="card shadow-gray-800 card-compact bg-base-300 w-full shadow-sm flex-row">
+                  <figure class="rounded-r-none">
+                      <img
+                      class="w-60 h-36 object-cover rounded-none"
+                      src=<%= store.profileUrl %>
+                      alt="Store" />
+                  </figure>
+                  <div class="card-body justify-between">
+                    <h2 class="card-title
+                    text-primary"><%=  store.storeName  %></h2>
+                      <p class="italic"><%= store.location %></p>
+                    <div class="card-actions justify-end items-center">
+                      <a class="btn btn-secondary btn-sm" href="/<%= userId %>/edit-profile">Edit Profile</a>
+                    </div>
+                  </div>
+                </div>
+              <% } else { %>
+
+              <!-- Customer Profile -->
+               <div class="card shadow-gray-800 card-compact bg-base-300 w-72 shadow-sm flex-row">
+                  <img src=<%= customer.profileUrl%> alt="" class="w-72 h-36 object-cover rounded">
+                  <div>
+                    <div class="badge badge-primary px-2 text-lg absolute top-1 right-1 rounded"><%= customer.name %></div>
+                    <div class="w-full absolute bottom-[-24px] left-0 flex justify-center">
+                      <a href="/<%= userId %>/edit-profile" class="btn btn-secondary">Edit Profile</a>
+                    </div>
+
+                  </div>
+               </div>
+               <% } %>
+
+
+            </div>
+
+            <% if (role === "store") { %>
+              <hr class="mt-4">
+              <p class="text-primary text-xl my-2 font-semibold text-center">STORE SALES REPORT</p>
+              <hr class="mb-4">
+              <!-- Product List Table -->
+               <% if (store.Purchases.length === 0) { %>
+                  <p class="text-center text-2xl italic mt-20 text-primary">Your don't have any sales yet ...</p>
+               <% } else { %>
+              <div class="overflow-x-auto w-full">
+                  <table class="table min-w-[960px]">
+                    <!-- head -->
+                    <thead>
+                      <tr class="text-primary bg-base-200 text-center">
+                        <th class="border border-base-300">No.</th>
+                        <th class="border border-base-300">Product Details</th>
+                        <th class="border border-base-300">Quantity</th>
+                        <th class="border border-base-300">Total Purchase</th>
+                        <th class="border border-base-300">Detail Customer</th>
+                        <th class="border border-base-300">Purchase Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% store.Purchases.forEach((item, idx) => { %>
+                          <!-- table row -->
+                          <tr class="text-center">
+                            <th class="border border-base-200 w-20"><%= idx + 1 %></th>
+                            <td class="border border-base-200 w-72">
+                              <div class="flex justify-center items-center gap-4">
+                                <img class="w-16 mask mask-squircle"  src=<%= item.productImage %> alt="product Image">
+                                <div class="flex flex-col justify-center gap-1">
+                                  <p><%= item.productName %></p>
+                                  <p class="text-xs text-primary">Price: <%= idrFormat(item.productPrice) %></p>
+                                </div>
+                              </td>
+                              
+                            <td class="w-24 border border-base-200"><p><%= item.productQuantity %> Pcs</p></td>
+                            <td class="w-48 border border-base-200"><%= idrFormat(item.totalPurchase) %></td>
+                            <td class="w-36 border border-base-200"><div class="flex flex-col justify-center items-center gap-2">
+                              <div class="avatar">
+                                <div class="ring-neutral ring-offset-base-100 w-10 rounded-full ring ring-offset-1">
+                                  <img src=<%= item.User.Customer.profileUrl %> />
+                                </div>
+                              </div>
+                              <p><%= item.User.Customer.name %></p>
+  
+                            </div></td>
+                            <td class="w-36 border border-base-200">
+                              <p class="text-primary italic">
+                                <%= item.updatedAt.toLocaleString("id-ID", {weekday: "long", year: "numeric", month:"long", day:"numeric"}) %>
+                              </p>
+  
+                            </td>
+                          </tr>
+                      <% }) %>
+          
+                    </tbody>
+                  </table>
+                </div>
+              <% } %>
+            <% } %>
+
+
+            <hr class="mt-12">
+            <p class=" text-xl my-2 font-semibold text-center">PURCHASES REPORT</p>
+            <hr class="mb-4">
+            <!-- Product List Table -->
+            <% if (!purchase) { %>
+              <p class="text-center text-2xl italic mt-10 text-primary">Your don't have any purchase yet ...</p>
+           <% } else { %>
+          <div class="overflow-x-auto w-full">
+              <table class="table min-w-[960px]">
+                <!-- head -->
+                <thead>
+                  <tr class="text-primary bg-base-200 text-center">
+                    <th class="border border-base-300">No.</th>
+                    <th class="border border-base-300">Product Details</th>
+                    <th class="border border-base-300">Quantity</th>
+                    <th class="border border-base-300">Total Purchase</th>
+                    <th class="border border-base-300">Detail Store</th>
+                    <th class="border border-base-300">Purchase Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% purchase.forEach((item, idx) => { %>
+                      <!-- table row -->
+                      <tr class="text-center">
+                        <th class="border border-base-200 w-20"><%= idx + 1 %></th>
+                        <td class="border border-base-200 w-72">
+                          <div class="flex justify-center items-center gap-4">
+                            <img class="w-16 mask mask-squircle"  src=<%= item.productImage %> alt="product Image">
+                            <div class="flex flex-col justify-center gap-1">
+                              <p><%= item.productName %></p>
+                              <p class="text-xs text-primary">Price: <%= idrFormat(item.productPrice) %></p>
+                            </div>
+                          </td>
+                          
+                        <td class="w-24 border border-base-200"><p><%= item.productQuantity %> Pcs</p></td>
+                        <td class="w-48 border border-base-200"><%= idrFormat(item.totalPurchase) %></td>
+                        <td class="w-72 border border-base-200"><div class="flex flex-row justify-center items-center gap-6">
+                          <div class="avatar">
+                            <div class="ring-neutral ring-offset-base-100 w-16 rounded-full ring ring-offset-1">
+                              <img src=<%= item.Store.profileUrl %> />
+                            </div>
+                          </div>
+                          <div class="flex flex-col justify-center items-start gap-1">
+                            <p><%= item.Store.storeName %></p>
+                            <p class="text-xs text-primary italic"><%= item.Store.location %></p>
+                          </div>
+
+          
+                        </div></td>
+                        <td class="w-36 border border-base-200">
+                          <p class="text-primary italic">
+                            <%= item.updatedAt.toLocaleString("id-ID", {weekday: "long", year: "numeric", month:"long", day:"numeric"}) %>
+                          </p>
+          
+                        </td>
+                      </tr>
+                  <% }) %>
+          
+                </tbody>
+              </table>
+            </div>
+          <% } %>
+
+        </div>
+    </div>
+  </body>
+</html>

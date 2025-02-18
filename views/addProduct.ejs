@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="luxury">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <%- include('./partials/_script') %>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('./partials/_navbar') %>
+
+    <!-- Edit Profile Form -->
+    <div class="flex flex-col lg:flex-row justify-center items-center my-10">
+      <form
+        action="/<%= userId %>/store/add-product"
+        method="POST"
+        class="card shadow-gray-800 card-compact bg-base-300 w-5/6 md:w-2/5 md:min-w-[640px] shadow-sm flex-col px-4"
+      >
+        <div class="card-body">
+          <!-- Title -->
+          <h2 class="text-2xl text-center font-semibold my-6">Add New Product</h2>
+
+          <!-- Input for name -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Product Name</span>
+            </div>
+            <input
+              name="productName"
+              type="text"
+              placeholder="Input product name"
+              class="input input-bordered w-full text-primary"
+            />
+            <% if (errors) { %>
+              <p class="text-error ml-2 mt-1 italic"> <%= errors.split(",").find(el=> el.includes('name')) %></p>
+            <% } %>
+            
+          </label>
+
+          <!-- Input for Profile URL -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Product image URL</span>
+            </div>
+            <input
+              name="productImage"
+              type="text"
+              placeholder="Input image URL"
+              class="input input-bordered w-full text-primary"
+            />
+            <% if (errors) { %>
+              <p class="text-error ml-2 mt-1 italic"> <%= errors.split(",").find(el=> el.includes('image')) %></p>
+            <% } %>
+          </label>
+
+          <!-- Input for Price -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Product Price in IDR currency</span>
+            </div>
+            <input
+              name="productPrice"
+              type="number"
+              placeholder="Input image URL"
+              class="input input-bordered w-full text-primary"
+            />
+            <% if (errors) { %>
+              <p class="text-error ml-2 mt-1 italic"> <%= errors.split(",").find(el=> el.includes('price')) %></p>
+            <% } %>
+          </label>
+
+          <!-- Input for Description -->
+          <label class="form-control">
+            <div class="label">
+              <span class="label-text">Product Description</span>
+            </div>
+            <textarea name="productDescription" class="textarea textarea-bordered h-28 w-full text-primary text-[16px]" placeholder="Input product description"></textarea>
+            <% if (errors) { %>
+              <p class="text-error ml-2 mt-1 italic"> <%= errors.split(",").find(el=> el.includes('description')) %></p>
+            <% } %>
+          </label>
+
+          <button class="btn btn-primary w-full text-lg my-4" type="submit">
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

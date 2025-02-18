@@ -1,8 +1,9 @@
-const { User, Product, Store } = require("../models");
+const { User, Product, Store, Customer } = require("../models");
 const { comparePassword } = require("../helpers/bcyrpt");
 
 const { Op } = require("sequelize");
 const idrFormat = require("../helpers/idrFormat");
+const store = require("../models/store");
 
 class UserController {
   static async getLogin(req, res) {
@@ -52,6 +53,22 @@ class UserController {
     try {
       let { username, password, email, role } = req.body;
       await User.create({ username, password, email, role });
+      const user = await User.findOne({ where: { username } });
+
+      if (role === "store") {
+        await Store.create({
+          storeName: username,
+          location: "-",
+          profileUrl: `https://image.pollinations.ai/prompt/placeholderprofilefor${username}?width=640&height=400&nologo=true`,
+          UserId: user.id,
+        });
+      } else {
+        await Customer.create({
+          name: username,
+          profileUrl: `https://image.pollinations.ai/prompt/placeholderprofilefor${username}?width=640&height=400&nologo=true`,
+          UserId: user.id,
+        });
+      }
 
       res.redirect("/login?success=Register success");
     } catch (error) {
@@ -72,18 +89,26 @@ class UserController {
     try {
       const role = req.session.role;
       const userId = req.session.userId;
-      const products = await Product.findAll({
-        include: [
-          {
-            model: Store,
-            attributes: ["UserId"] ,
-          },
-        ],
+      const { sort, search } = req.query;
+      const hooks = [
+        {
+          model: Store,
+          attributes: ["UserId", "id"],
+        },
+      ];
+
+      const products = await Product.getProductByFilter(search, sort, hooks);
+
+      res.render("home", {
+        title: "Home",
+        products,
+        role,
+        userId,
+        idrFormat,
+        sort,
+        search,
       });
-      
-      res.render("home", { title: "Home", products, role, userId, idrFormat });
     } catch (error) {
-      console.log(error);
       res.send(error);
     }
   }
@@ -94,6 +119,55 @@ class UserController {
       res.redirect("/login");
     } catch (error) {
       res.send(error);
+    }
+  }
+
+  static async editProfile(req, res) {
+    try {
+      const role = req.session.role;
+      const userId = req.session.userId;
+
+      let user = null;
+      if (role === "store") {
+        user = await Store.findOne({ where: { UserId: userId } });
+      } else {
+        user = await Customer.findOne({ where: { UserId: userId } });
+      }
+
+      console.log(user);
+      res.render("editProfile", { title: "Edit Profile", role, userId, user });
+    } catch (error) {
+      res.send(error);
+    }
+  }
+
+  static async postEditProfile(req, res) {
+    try {
+      const role = req.session.role;
+      const userId = req.session.userId;
+      const { name, profileUrl, location } = req.body;
+
+      if (role === "store"){
+        await Store.update({ storeName: name, profileUrl, location }, { where: { UserId: userId } });
+      } else {
+        await Customer.update({ name, profileUrl }, { where: { UserId: userId } });
+      }
+
+      res.redirect("/");
+    } catch (error) {
+      res.send(error);
+    }
+  }
+
+  static async showError(req, res) {
+    try {
+      const { error } = req.query;
+      const userId = req.session.UserId;
+      const role = req.session.role;
+
+      res.render("error", { title: "Error", error, userId, role });
+    } catch (error) {
+      res.send (error);
     }
   }
 }

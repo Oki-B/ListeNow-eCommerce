@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.hasOne(models.Store)
       User.hasOne(models.Customer)
+      User.hasMany(models.Purchase)
     }
   }
   User.init({
@@ -66,7 +67,18 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    role: DataTypes.STRING
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull:{
+          msg: `Role is required`
+        },
+        notEmpty:{
+          msg: `Role is required`
+        }
+      }
+    }
   }, {
     hooks: {
       beforeCreate: (user, options) => {
