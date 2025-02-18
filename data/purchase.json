@@ -6,6 +6,6 @@
         "productQuantity": 2,
         "totalPurchase": 1500000,
         "StoreId": 1,
-        "CustomerId": 1
+        "UserId": 1
     }
 ]

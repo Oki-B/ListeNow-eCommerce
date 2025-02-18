@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Customer.belongsTo(models.User)
-      Customer.hasMany(models.Purchase)
     }
   }
   Customer.init({

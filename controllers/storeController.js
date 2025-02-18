@@ -61,15 +61,16 @@ class storeController {
         StoreId: store.id,
       });
 
-      res.redirect(`/store/${userId}`);
+      res.redirect(`/${userId}/store`);
     } catch (error) {
+      const userId = req.session.userId;
       if (
         error.name === "SequelizeValidationError" ||
         error.name === "SequelizeUniqueConstraintError"
       ) {
         let errors = error.errors.map((el) => el.message);
 
-        res.redirect(`/store/add-product/?errors=${errors}`);
+        res.redirect(`/${userId}/store/add-product/?errors=${errors}`);
       } else {
         res.send(error);
       }
@@ -113,15 +114,16 @@ class storeController {
         { where: { id } }
       );
 
-      res.redirect(`/store/${userId}`);
+      res.redirect(`/${userId}/store`);
     } catch (error) {
+      const userId = req.session.userId;
       if (
         error.name === "SequelizeValidationError" ||
         error.name === "SequelizeUniqueConstraintError"
       ) {
         let errors = error.errors.map((el) => el.message);
         const { id } = req.params;
-        res.redirect(`/store/edit-product/${id}?errors=${errors}`);
+        res.redirect(`/${userId}/store/edit-product/${id}?errors=${errors}`);
       } else {
         res.send(error);
       }
@@ -135,7 +137,7 @@ class storeController {
 
       await Product.destroy({ where: { id } });
 
-      res.redirect(`/store/${userId}`);
+      res.redirect(`/${userId}/store`);
     } catch (error) {
       res.send(error);
     }

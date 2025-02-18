@@ -56,7 +56,46 @@
 
                       <div class="card-actions justify-end items-center">
                         <p class="text-[16px] text-primary font-semibold badge bg-base-200 rounded h-12 border-base-100 italic"><%= idrFormat(el.productPrice) %></p>
-                        <button class="btn btn-neutral btn-md my-2">Buy Now</button>
+                        <a class="btn btn-neutral btn-md my-2" href="#my_modal_<%= el.id %>">Buy Now</a>
+                        <!-- Open the modal using ID.showModal() method -->
+                        <div id="my_modal_<%= el.id %>" class="modal modal-bottom sm:modal-middle" role="dialog">
+                          <div class="modal-box  bg-base-300 shadow-lg">
+                            <form action="/<%= userId %>/purchase/buy/<%= el.id %>" method="POST" class="flex flex-col items-center p-4 gap-2">
+                              <h2 class="text-2xl font-semibold mb-4"
+                              style="font-family: Audiowide, serif;
+                              font-weight: 400;
+                              font-style: normal;">
+                              Buy Now</h2>
+                              <div class="flex justify-center items-center gap-4">
+                                <img class="w-40 rounded shadow-sm shadow-gray-800" src=<%= el.productImage %> alt="">
+                                <div>
+                                  <p class="font-semibold text-xl text-primary"> <%= el.productName %></p>
+                                  <p class=" text-lg"> <%= idrFormat(el.productPrice) %></p>
+                                  <!-- Input quantity -->
+                                  <label class="form-control w-full px-0">
+                                    <div class="label flex items-center justify-start gap-2">
+                                      <span class="label-text text-md
+                                      ">Quantity</span>
+                                      <input name="quantity" type="number" min="1" max="10" class="input input-bordered w-14 text-primary h-8" id="quantity-<%= el.id %>"  value="1" onchange="updateTotal('<%= el.id %>', '<%= el.productPrice %>')" />
+                                      </div>
+                                  </label>
+                                  <p>
+                                    Total Price: <br><span class="text-lg font-semibold text-primary" id="total-price-<%= el.id %>">
+                                      <%= idrFormat(el.productPrice) %>
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
+                              <p class="text-primary text-md my-2">Are you sure you want to buy this product?</p>
+                              <div class="flex justify-center items-center gap-4 px-4">
+                                <button type="submit" class="btn btn-primary w-full">Yes</button>
+                                <a class="btn w-full" href="#">Cancel</a>
+                              </div>
+                            </form>
+
+
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -65,5 +104,20 @@
         <% }) %>
       </div>
     </div>
+
+    <script>
+      function idrFormat(price) {
+        return new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+        }).format(price);
+      }
+    
+      function updateTotal(id, price) {
+        const quantity = document.getElementById(`quantity-${id}`).value;
+        const totalPrice = price * quantity;
+        document.getElementById(`total-price-${id}`).innerText = idrFormat(totalPrice);
+      }
+    </script>
   </body>
 </html>

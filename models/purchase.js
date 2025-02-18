@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Purchase.belongsTo(models.Store)
-      Purchase.belongsTo(models.Customer)
+      Purchase.belongsTo(models.User)
     }
   }
   Purchase.init({
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     productQuantity: DataTypes.INTEGER,
     totalPurchase: DataTypes.INTEGER,
     StoreId: DataTypes.INTEGER,
-    CustomerId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Purchase',

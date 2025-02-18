@@ -34,11 +34,11 @@ module.exports = {
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       },
-      CustomerId: {
+      UserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Customers",
+          model: "Users",
           key: "id",
         },
         onDelete: "CASCADE",

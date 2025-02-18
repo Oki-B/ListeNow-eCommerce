@@ -27,7 +27,7 @@
                     text-primary"><%= store.storeName %></h2>
                     <p class="italic"><%= store.location %></p>
                     <div class="card-actions justify-end items-center">
-                      <a class="btn btn-secondary btn-sm" href="/edit-profile">Edit Profile</a>
+                      <a class="btn btn-secondary btn-sm" href="/<%= userId %>/edit-profile">Edit Profile</a>
                     </div>
                   </div>
                 </div>
@@ -38,7 +38,7 @@
                       <div class="stat-title text-center">Total Sales</div>
                       <div class="stat-value text-center"><%= idrFormat(store.dataValues.totalSales) %></div>
                       <div class="stat-actions flex justify-center">
-                        <a href="/purchase/<%= userId %>" class="btn btn-sm">Check Sales</a>
+                        <a href="/<%= userId %>/purchase" class="btn btn-sm">Check Sales</a>
                       </div>
                     </div>
 
@@ -46,7 +46,7 @@
                         <div class="stat-title text-center">Total Product</div>
                         <div class="stat-value text-center"><%= store.Products.length %></div>
                         <div class="stat-actions flex justify-center">
-                          <a href="/store/add-product" class="btn btn-sm">Add Product</a>
+                          <a href="/<%= userId %>/store/add-product" class="btn btn-sm">Add Product</a>
                         </div>
                     </div>
                 </div>
@@ -84,8 +84,8 @@
                           <td class="w-36 border border-base-200"><%= idrFormat(product.productPrice) %></td>
                           <td class="w-36 h-36 border border-base-200">
                             <div class="flex flex-col gap-2 justify-center">
-                                <a href="/store/edit-product/<%= product.id %>" class="btn btn-secondary btn-sm">Edit</a>
-                                <a href="/store/delete-product/<%= product.id %>" class="btn btn-error btn-sm">Delete</a>
+                                <a href="/<%= userId %>/store/edit-product/<%= product.id %>" class="btn btn-secondary btn-sm">Edit</a>
+                                <a href="/<%= userId %>/store/delete-product/<%= product.id %>" class="btn btn-error btn-sm">Delete</a>
                             </div>
 
                           </td>

@@ -2,7 +2,10 @@ const express = require('express');
 const purchaseController = require('../controllers/purchaseController');
 const router = express.Router();
 
-router.get('/:UserId', purchaseController.getPurchase);
+router.get('/', purchaseController.getPurchase);
+router.post('/buy/:ProductId', purchaseController.buyProduct);
+
+
 
 
 module.exports = router;

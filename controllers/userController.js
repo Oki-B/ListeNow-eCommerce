@@ -158,6 +158,18 @@ class UserController {
       res.send(error);
     }
   }
+
+  static async showError(req, res) {
+    try {
+      const { error } = req.query;
+      const userId = req.session.UserId;
+      const role = req.session.role;
+
+      res.render("error", { title: "Error", error, userId, role });
+    } catch (error) {
+      res.send (error);
+    }
+  }
 }
 
 module.exports = UserController;

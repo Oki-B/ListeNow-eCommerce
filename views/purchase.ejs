@@ -37,7 +37,7 @@
                     text-primary"><%=  store.storeName  %></h2>
                       <p class="italic"><%= store.location %></p>
                     <div class="card-actions justify-end items-center">
-                      <a class="btn btn-secondary btn-sm" href="/edit-profile">Edit Profile</a>
+                      <a class="btn btn-secondary btn-sm" href="/<%= userId %>/edit-profile">Edit Profile</a>
                     </div>
                   </div>
                 </div>
@@ -45,11 +45,11 @@
 
               <!-- Customer Profile -->
                <div class="card shadow-gray-800 card-compact bg-base-300 w-72 shadow-sm flex-row">
-                  <img src=<%= purchase.profileUrl%> alt="" class="w-72 h-36 object-cover rounded">
+                  <img src=<%= customer.profileUrl%> alt="" class="w-72 h-36 object-cover rounded">
                   <div>
-                    <div class="badge badge-primary px-2 text-lg absolute top-1 right-1 rounded"><%= purchase.name %></div>
+                    <div class="badge badge-primary px-2 text-lg absolute top-1 right-1 rounded"><%= customer.name %></div>
                     <div class="w-full absolute bottom-[-24px] left-0 flex justify-center">
-                      <a href="/edit-profile" class="btn btn-secondary">Edit Profile</a>
+                      <a href="/<%= userId %>/edit-profile" class="btn btn-secondary">Edit Profile</a>
                     </div>
 
                   </div>
@@ -99,10 +99,10 @@
                             <td class="w-36 border border-base-200"><div class="flex flex-col justify-center items-center gap-2">
                               <div class="avatar">
                                 <div class="ring-neutral ring-offset-base-100 w-10 rounded-full ring ring-offset-1">
-                                  <img src=<%= item.Customer.profileUrl %> />
+                                  <img src=<%= item.User.Customer.profileUrl %> />
                                 </div>
                               </div>
-                              <p><%= item.Customer.name %></p>
+                              <p><%= item.User.Customer.name %></p>
   
                             </div></td>
                             <td class="w-36 border border-base-200">
@@ -142,7 +142,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% purchase.Purchases.forEach((item, idx) => { %>
+                  <% purchase.forEach((item, idx) => { %>
                       <!-- table row -->
                       <tr class="text-center">
                         <th class="border border-base-200 w-20"><%= idx + 1 %></th>
