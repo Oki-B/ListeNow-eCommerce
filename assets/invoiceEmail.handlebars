@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Invoice</title>
+
+    {{> styles }}
+</head>
+<body>
+    <div class="container">
+        <h1>ListeNow</h1>
+        <div class="invoice-details">
+            <div
+            style="display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;">
+            <div >
+                <h2 >Invoice</h2>
+                <p>Thanks for your order!</p>
+                <p>Hi, <strong>{{ userName }}</strong>! Here's what you purchased:</p>
+            </div>
+                <img src="{{ productImage }}" alt="image of product" id="product-image">
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ productName }}</td>
+                    <td>{{ productQuantity }}</td>
+                    <td>{{ productPrice }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="total">
+            <p>Total:</p>
+            <p>{{ totalPurchase }}</p>
+        </div>
+        <div class="store-info">
+            <img src=`{{ storeImage }}` alt="Store Image" id="store-image">
+            <div>
+                <p><strong>Store Details:</strong></p>
+                <p>{{ storeName }}</p>
+                <p>{{ storeLocation }}</p>
+            </div>
+        </div>
+        <div class="email-footer">
+            <p>This invoice was sent to {{ userEmail }}</p>
+        </div>
+    </div>
+</body>
+</html>

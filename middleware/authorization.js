@@ -10,7 +10,6 @@ function isStore(req, res, next) {
 
 function authorization(req, res, next) {
   const { UserId } = req.params
-  console.log(req.params, req.session.userId)
   if (req.session.userId === Number(UserId)) {
     next()
   }
